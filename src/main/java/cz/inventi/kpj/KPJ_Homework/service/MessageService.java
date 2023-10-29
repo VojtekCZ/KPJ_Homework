@@ -12,23 +12,23 @@ public class MessageService {
     @Autowired
     Database database;
 
-    public List<MessageDto> getAllMessageservices() {
-        List<Messageservice> Messageservices = database.findAll();
-        return Messageservices.stream()
+    public List<MessageDto> getAllMessageServices() {
+        List<MessageService> MessageServices = database.findAll();
+        return MessageServices.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
-    public MessageDto getCurrentMessageservice() {
-        // Implementujte získání aktuálního Messageservisu
-        // a převod na MessageserviceDTO
+    public MessageDto getCurrentMessageService() {
+        // Implementujte získání aktuálního MessageServisu
+        // a převod na MessageServiceDTO
     }
 
-    public MessageDto getMessageserviceByName(String name) {
-        Optional<Messageservice> MessageserviceOptional = database.findByServiceName(name);
+    public MessageDto getMessageServiceByName(String name) {
+        Optional<MessageService> MessageServiceOptional = database.findByServiceName(name);
 
-        if (MessageserviceOptional.isPresent()) {
-            return convertToDto(MessageserviceOptional.get());
+        if (MessageServiceOptional.isPresent()) {
+            return convertToDto(MessageServiceOptional.get());
         } else {
             // Pokud mikroslužba s daným jménem neexistuje, můžete vyvolat vlastní výjimku nebo vrátit null.
             return null;
@@ -36,21 +36,21 @@ public class MessageService {
     }
 
 
-    public void registerMessageservice(String serviceName, int port) {
-        Optional<Messageservice> existingMessageservice = database.findByServiceName(serviceName);
+    public void registerMessageService(String serviceName, int port) {
+        Optional<MessageService> existingMessageService = database.findByServiceName(serviceName);
 
-        if (existingMessageservice.isPresent()) {
+        if (existingMessageService.isPresent()) {
             // Mikroslužba již existuje, můžete provést jinou logiku (např. aktualizaci portu).
         } else {
-            Messageservice newMessageservice = new Messageservice(serviceName, port);
-            database.save(newMessageservice);
+            MessageService newMessageService = new MessageService(serviceName, port);
+            database.save(newMessageService);
         }
     }
 
-    private MessageDto convertToDto(Messageservice Messageservice) {
-        MessageDto messageDto = new MessageserviceDTO();
-        messageDto.setServiceName(Messageservice.getServiceName());
-        messageDto.setPort(Messageservice.getPort());
+    private MessageDto convertToDto(MessageService MessageService) {
+        MessageDto messageDto = new MessageServiceDTO();
+        messageDto.setServiceName(MessageService.getServiceName());
+        messageDto.setPort(MessageService.getPort());
         return messageDto;
     }
 

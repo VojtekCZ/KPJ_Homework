@@ -15,23 +15,23 @@ public class Controller {
     private MessageService messageService;
 
     @GetMapping("/")
-    public List<MessageDto> getAllMessageservices() {
-        return messageService.getAllMessageservices();
+    public List<MessageDto> getAllMessageServices() {
+        return messageService.getAllMessageServices();
     }
 
     @GetMapping("/current")
-    public MessageDto getCurrentMessageservice() {
-        return messageService.getCurrentMessageservice();
+    public MessageDto getCurrentMessageService() {
+        return messageService.getCurrentMessageService();
     }
 
     @GetMapping("/{name}")
-    public MessageDto getMessageserviceByName(@PathVariable String name) {
-        return messageService.getMessageserviceByName(name);
+    public MessageDto getMessageServiceByName(@PathVariable String name) {
+        return messageService.getMessageServiceByName(name);
     }
 
     @PostMapping("/register")
     public void registerMicroservice() {
-        messageService.registerMessageservice();
+        messageService.registerMessageService();
     }
 
 }
