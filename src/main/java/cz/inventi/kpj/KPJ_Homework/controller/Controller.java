@@ -30,8 +30,7 @@ public class Controller {
     }
 
     @PostMapping("/register")
-    public void registerMicroservice() {
-        messageService.registerMessageService();
+    public void registerMessage(@RequestParam String serviceName, @RequestParam int port) {
+        messageService.registerMessageService(serviceName, port);
     }
-
 }

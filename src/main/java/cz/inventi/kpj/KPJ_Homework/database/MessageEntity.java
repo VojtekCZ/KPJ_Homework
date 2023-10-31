@@ -8,8 +8,6 @@ import lombok.Setter;
 
 @Entity
 @Data
-@Getter
-@Setter
 public class MessageEntity {
 
     @Id
