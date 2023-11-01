@@ -2,7 +2,7 @@
 version: '3'
 
 services:
-  microservice-registry:
+  kpj_homework:
     build: .
     ports:
       - "8080:8080"

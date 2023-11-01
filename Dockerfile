@@ -3,10 +3,10 @@ FROM  openjdk:17
 WORKDIR /home/Desktop/Inventi/KPJ_Homework
 
 COPY    ./target/KPJ_Homework-0.0.1-SNAPSHOT.jar /home//Desktop/Inventi/KPJ_Homework
-COPY    ./docker-config/ /home//Desktop/Inventi/KPJ_Homework/config/
+COPY    ./ /home//Desktop/Inventi/KPJ_Homework/config/
 
 EXPOSE  8085
 
-CMD     java -jar KPJ_Homework-0.0.1-SNAPSHOT.jar --spring.config.location=file:/home/Desktop/Inventi/KPJ_Homework/config/application.properties
+CMD     java -jar /home/Desktop/Inventi/KPJ_Homework/KPJ_Homework-0.0.1-SNAPSHOT.jar --spring.config.location=file:/home/Desktop/Inventi/KPJ_Homework/application.properties
 
 
