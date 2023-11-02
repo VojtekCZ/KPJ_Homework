@@ -39,11 +39,14 @@ public class MessageService {
     }
 
 
-    public void registerMessageService(String serviceName, int port) {
-        Optional<MessageEntity> existingMessageService = database.findByServiceName(serviceName);
+    public void registerMessageService(String message) {
+        Optional<MessageEntity> existingMessageService = database.findByServiceName(message);
+        String[] parts = message.split(";");
+        String serviceName = parts[0];
+        int port = Integer.parseInt(parts[1]);
 
         if (existingMessageService.isPresent()) {
-            System.out.println("Microservice " + serviceName + " is already registered.");
+            System.out.println("Microservice " + message + " is already registered.");
         } else {
             MessageEntity messageEntity = new MessageEntity();
             messageEntity.setServiceName(serviceName);
@@ -53,9 +56,6 @@ public class MessageService {
         }
     }
 
-    public void processMessage(String serviceName, int port) {
-        registerMessageService(serviceName, port);
-    }
 
     private MessageDto convertToDto(MessageEntity messageEntity) {
         MessageDto messageDto = new MessageDto();
