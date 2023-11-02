@@ -24,8 +24,7 @@ public class MessageService {
     }
 
     public MessageDto getCurrentMessageService() {
-        // Implementujte získání aktuálního MessageServisu
-        // a převod na MessageServiceDTO
+        //dopsat
         return null;
     }
 
