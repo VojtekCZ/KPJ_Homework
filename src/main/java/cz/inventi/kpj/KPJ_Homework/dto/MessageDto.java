@@ -1,14 +1,21 @@
 package cz.inventi.kpj.KPJ_Homework.dto;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
+
+import java.time.LocalDateTime;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MessageDto {
+    private int id;
+    @NotNull
     private String serviceName;
-    private int port;
-
+    @NotNull
+    private String port;
+    @NotNull
+    private LocalDateTime registerTime;
 }
 
 
