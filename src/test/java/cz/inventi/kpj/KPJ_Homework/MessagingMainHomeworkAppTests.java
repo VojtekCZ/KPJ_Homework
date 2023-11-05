@@ -12,9 +12,9 @@ import java.util.List;
 
 import static cz.inventi.kpj.KPJ_Homework.service.MessageService.getMessageName;
 import static java.lang.String.format;
-import static java.util.Arrays.asList;
 import static java.util.Objects.isNull;
 import static java.util.Objects.requireNonNull;
+import static java.util.Arrays.asList;
 
 class MessagingMainHomeworkAppTests extends TestBase {
 

@@ -9,6 +9,6 @@ services:
     environment:
       SPRING_RABBITMQ_ADDRESSES: "amqp://guest:guest@host.docker.internal:5672/"
       SERVICE_NAME: "vojtechleskovsky"
-      SERVICE_EXPOSED_PORT: "41632"
+      SERVICE_EXPOSED_PORT: "5672"
       RABBITMQ_FANOUT_NAME: "kpj"
       RABBITMQ_QUEUE_NAME: "kpj.vojtechleskovsky"

@@ -13,7 +13,7 @@ public class TestKpjHomeworkApplication {
     @Bean
     @ServiceConnection
     RabbitMQContainer rabbitContainer() {
-        return new RabbitMQContainer(DockerImageName.parse("rabbitmq:latest"));
+        return new RabbitMQContainer(DockerImageName.parse("rabbitmq:3.13.0-rc.1-management"));
     }
 
     public static void main(String[] args) {
