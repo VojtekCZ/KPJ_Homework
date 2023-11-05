@@ -3,12 +3,19 @@ version: '3'
 
 services:
   kpj_homework:
-    image: "kpj_homework"
+    image: "leskovsky_kpj_homework"
+    build: .
     ports:
       - "8080:8080"
     environment:
-      SPRING_RABBITMQ_ADDRESSES: "amqp://guest:guest@host.docker.internal:5672/"
+      RABBIT_ADDRESS: "amqp://guest:guest@host.docker.internal:5672/"
       SERVICE_NAME: "vojtechleskovsky"
-      SERVICE_EXPOSED_PORT: "5672"
+      SERVICE_EXPOSED_PORT: "31836"
       RABBITMQ_FANOUT_NAME: "kpj"
       RABBITMQ_QUEUE_NAME: "kpj.vojtechleskovsky"
+  rabbitMQ:
+    image: rabbitmq:3.13.0-rc.1-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
