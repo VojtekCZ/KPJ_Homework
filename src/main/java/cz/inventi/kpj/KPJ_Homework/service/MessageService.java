@@ -4,9 +4,9 @@ import cz.inventi.kpj.KPJ_Homework.database.Database;
 import cz.inventi.kpj.KPJ_Homework.dto.MessageDto;
 import cz.inventi.kpj.KPJ_Homework.mapper.MessageMapper;
 import cz.inventi.kpj.KPJ_Homework.messaging.RabbitMQConfiguration;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,30 +17,32 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class MessageService {
-    @Autowired
-    Database database;
-    @Autowired
-    MessageMapper messageMapper;
-    @Autowired
-    RabbitMQConfiguration rabbitMQConfiguration;
+@RequiredArgsConstructor
+public class MessageService implements ServiceRegistrationServiceImpl{
 
     @Value("${self.registration.message.content}")
-    private String messageContent;
+    private String content;
 
+    private final Database database;
+    private final MessageMapper messageMapper;
+    private final RabbitMQConfiguration rabbitMQConfiguration;
+
+    @Override
     public void registerMessageService() {
-        rabbitMQConfiguration.sendMessage(messageContent);
+        rabbitMQConfiguration.sendMessage(content);
 
     }
-
+    @Override
     public List<MessageDto> getAllMessageServices() {
         return database.findAll().stream().map(messageMapper::messageEntityToMessageDto).collect(Collectors.toList());
     }
 
+    @Override
     public MessageDto getCurrentMessageService() {
-        return getMessageServiceByName(getMessageName(messageContent));
+        return getMessageServiceByName(content);
     }
 
+    @Override
     public MessageDto getMessageServiceByName(String name) {
         return messageMapper.messageEntityToMessageDto(database.findByServiceName(name)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));

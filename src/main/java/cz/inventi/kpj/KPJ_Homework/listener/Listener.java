@@ -15,14 +15,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class Listener implements ApplicationListener<ContextRefreshedEvent> {
     @Value("${self.registration.message.content}")
-    private String selfRegistrationMessageContent;
+    private String content;
 
     private final RabbitMQConfiguration rabbitMQConfiguration;
 
     @Override
     public void onApplicationEvent(@NonNull ContextRefreshedEvent event) {
-        rabbitMQConfiguration.sendMessage(selfRegistrationMessageContent);
-        log.info("Self registration message sent for the service {}.", selfRegistrationMessageContent);
+        rabbitMQConfiguration.sendMessage(content);
+        log.info("Self registration message sent for the service {}.", content);
     }
 
 }

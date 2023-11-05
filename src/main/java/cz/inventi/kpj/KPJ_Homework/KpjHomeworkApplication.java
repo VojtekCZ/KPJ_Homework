@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories
 @Slf4j
+//@ComponentScan(basePackages = "cz.inventi.kpj.KPJ_Homework")
 public class KpjHomeworkApplication{
 
 	public static void main(String[] args) {

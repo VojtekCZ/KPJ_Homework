@@ -8,9 +8,10 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class MessageEntity {
 
     @Id
@@ -19,7 +20,6 @@ public class MessageEntity {
     private String serviceName;
     private String port;
     private LocalDateTime registerTime;
-
 
 
 }
