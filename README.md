@@ -29,4 +29,6 @@ Navigate to the 'Queues' tab.
 Find the queue named 'kpj.vojtechleskovsky'.
 
 Verify that the 'kpj.vojtechleskovsky' queue is correctly set up with the desired parameters.
-![screen1](/home/vojtek/Pictures/Screenshots/1.png)
+![screen1](1.png)
+![screen2](2.png)
+
