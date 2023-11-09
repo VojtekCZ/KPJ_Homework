@@ -7,4 +7,4 @@ COPY    ./ /home/docker-example-app/config/
 
 EXPOSE  31836
 
-CMD     java -jar kpj_homework-0.0.1-snapshot --spring.config.location=file:/home/docker-example-app/config/application.properties
+CMD     java -jar kpj_homework-0.0.1-snapshot.jar --spring.config.location=file:/home/docker-example-app/config/application.properties
